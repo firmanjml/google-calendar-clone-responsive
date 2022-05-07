@@ -6,6 +6,7 @@ export default function Day({ day, rowIdx }) {
   const [dayEvents, setDayEvents] = useState([]);
   const {
     setDaySelected,
+    monthIndex,
     setShowEventModal,
     filteredEvents,
     setSelectedEvent,
@@ -26,8 +27,8 @@ export default function Day({ day, rowIdx }) {
   }
 
   function getOtherMonthClass() {
-    return day.format("MM") !== dayjs().format("MM")
-      ? "bg-gray-200 border-gray-300"
+    return dayjs().month(monthIndex).format("MM") !== day.format("MM")
+      ? "bg-gray-100 border-gray-200"
       : "";
   }
 
@@ -54,13 +55,13 @@ export default function Day({ day, rowIdx }) {
         </p>
       </header>
       <div
-        className="flex-1 cursor-pointer"
+        className="flex-1 cursor-pointer md:overflow-y-auto scrollbar scrollbar-thumb-gray-400  scrollbar-track-gray-100 scrollbar-thin scrollbar-thumb-rounded-md"
       >
         {dayEvents.map((evt, idx) => (
           <div
             key={idx}
             onClick={() => setSelectedEvent(evt)}
-            className={`bg-${evt.label}-200 p-1 text-gray-600 text-xs md:text-sm rounded mb-1 truncate text-center md:text-left`}
+            className={`bg-${evt.label}-200 p-1 text-gray-800 text-xs rounded mb-1 truncate text-center md:text-left mx-1`}
           >
             {evt.title}
           </div>

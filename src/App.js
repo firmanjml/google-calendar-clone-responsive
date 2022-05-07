@@ -23,7 +23,7 @@ function App() {
         <div className="md:hidden flex">
           <Sidebar />
         </div>
-        <div className="flex flex-1">
+        <div className="flex flex-1 h-screen md:overflow-hidden">
           <div className="hidden md:inline">
             <Sidebar />
           </div>
