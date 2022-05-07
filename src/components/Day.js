@@ -25,31 +25,35 @@ export default function Day({ day, rowIdx }) {
       : "";
   }
   return (
-    <div className="border border-gray-200 flex flex-col">
+    <div className="border border-gray-200 flex flex-col"
+      onClick={() => {
+        setDaySelected(day);
+        setShowEventModal(true);
+      }}
+    >
       <header className="flex flex-col items-center">
         {rowIdx === 0 && (
-          <p className="text-sm mt-1">
+          <p className={`hidden md:inline font-bold text-xs md:text-sm mt-1`}>
             {day.format("ddd").toUpperCase()}
           </p>
         )}
+        <p className={` text-xs md:text-sm mt-2 font-bold md:hidden`}>
+          {day.format("ddd").toUpperCase()}
+        </p>
         <p
-          className={`text-sm p-1 my-1 text-center  ${getCurrentDayClass()}`}
+          className={`text-xs md:text-sm p-1 my-1 text-center ${getCurrentDayClass()}`}
         >
           {day.format("DD")}
         </p>
       </header>
       <div
         className="flex-1 cursor-pointer"
-        onClick={() => {
-          setDaySelected(day);
-          setShowEventModal(true);
-        }}
       >
         {dayEvents.map((evt, idx) => (
           <div
             key={idx}
             onClick={() => setSelectedEvent(evt)}
-            className={`bg-${evt.label}-200 p-1 mr-3 text-gray-600 text-sm rounded mb-1 truncate`}
+            className={`bg-${evt.label}-200 p-1 text-gray-600 text-xs md:text-sm rounded mb-1 truncate text-center md:text-left`}
           >
             {evt.title}
           </div>
