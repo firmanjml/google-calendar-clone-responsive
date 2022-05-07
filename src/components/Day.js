@@ -41,7 +41,12 @@ export default function Day({ day, rowIdx }) {
           {day.format("ddd").toUpperCase()}
         </p>
         <p
-          className={`text-xs md:text-sm p-1 my-1 text-center ${getCurrentDayClass()}`}
+          className={`text-xs md:text-sm p-1 my-1 text-center ${getCurrentDayClass()} md:hidden`}
+        >
+          {day.format(day.format("DD-MM-YY") === dayjs().format("DD-MM-YY") ? "DD" : "MMM, DD")}
+        </p>
+        <p
+          className={`text-xs md:text-sm p-1 my-1 text-center ${getCurrentDayClass()} hidden md:inline`}
         >
           {day.format("DD")}
         </p>

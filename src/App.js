@@ -20,8 +20,13 @@ function App() {
 
       <div className="h-screen flex flex-col">
         <CalendarHeader />
-        <div className="flex flex-1">
+        <div className="md:hidden flex">
           <Sidebar />
+        </div>
+        <div className="flex flex-1">
+          <div className="hidden md:inline">
+            <Sidebar />
+          </div>
           <Month month={currenMonth} />
         </div>
       </div>

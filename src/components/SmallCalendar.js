@@ -45,19 +45,19 @@ export default function SmallCalendar() {
   return (
     <div className="mt-9">
       <header className="flex justify-between">
-        <p className="text-gray-500 font-bold text-sm md:text-base ">
+        <p className="text-gray-500 font-bold">
           {dayjs(new Date(dayjs().year(), currentMonthIdx)).format(
             "MMMM YYYY"
           )}
         </p>
         <div>
           <button onClick={handlePrevMonth}>
-            <span className="material-icons-outlined cursor-pointer text-sm md:text-base text-gray-600 mx-2">
+            <span className="material-icons-outlined cursor-pointer text-gray-600 mx-2">
               chevron_left
             </span>
           </button>
           <button onClick={handleNextMonth}>
-            <span className="material-icons-outlined cursor-pointer text-sm md:text-base text-gray-600 mx-2">
+            <span className="material-icons-outlined cursor-pointer text-gray-600 mx-2">
               chevron_right
             </span>
           </button>
@@ -65,7 +65,7 @@ export default function SmallCalendar() {
       </header>
       <div className="grid grid-cols-7 grid-rows-6">
         {currentMonth[0].map((day, i) => (
-          <span key={i} className="text-xs md:text-sm py-2 md:py-1 text-center">
+          <span key={i} className="text-sm py-1 text-center">
             {day.format("dd").charAt(0)}
           </span>
         ))}
@@ -80,7 +80,7 @@ export default function SmallCalendar() {
                 }}
                 className={`py-1 w-full ${getDayClass(day)}`}
               >
-                <span className="text-xs md:text-sm">{day.format("D")}</span>
+                <span className="text-sm">{day.format("D")}</span>
               </button>
             ))}
           </React.Fragment>
