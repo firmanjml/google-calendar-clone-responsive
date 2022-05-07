@@ -24,8 +24,15 @@ export default function Day({ day, rowIdx }) {
       ? "bg-blue-600 text-white rounded-full w-7"
       : "";
   }
+
+  function getOtherMonthClass() {
+    return day.format("MM") !== dayjs().format("MM")
+      ? "bg-gray-200 border-gray-300"
+      : "";
+  }
+
   return (
-    <div className="border border-gray-200 flex flex-col"
+    <div className={`border border-gray-200 flex flex-col ${getOtherMonthClass()}`}
       onClick={() => {
         setDaySelected(day);
         setShowEventModal(true);
@@ -41,12 +48,7 @@ export default function Day({ day, rowIdx }) {
           {day.format("ddd").toUpperCase()}
         </p>
         <p
-          className={`text-xs md:text-sm p-1 my-1 text-center ${getCurrentDayClass()} md:hidden`}
-        >
-          {day.format(day.format("DD-MM-YY") === dayjs().format("DD-MM-YY") ? "DD" : "MMM, DD")}
-        </p>
-        <p
-          className={`text-xs md:text-sm p-1 my-1 text-center ${getCurrentDayClass()} hidden md:inline`}
+          className={`text-xs md:text-sm p-1 my-1 text-center ${getCurrentDayClass()}`}
         >
           {day.format("DD")}
         </p>
